@@ -1,0 +1,5 @@
+---
+interface Props { date:Date; }
+const {date}=Astro.props;
+---
+<time datetime={date.toISOString()}>{date.toLocaleDateString('vi-VN',{day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Ho_Chi_Minh'})}</time>

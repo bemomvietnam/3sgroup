@@ -1,0 +1,13 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icons from '../components/Icons.astro';
+interface Props { title:string;description:string;image?:{src:string}; }
+---
+<!doctype html><html lang="vi"><head><BaseHead {...Astro.props}/></head><body>
+<a class="skip" href="#noi-dung">Đến nội dung chính</a><Icons/><Header/>
+<main class="wrap" id="noi-dung"><slot/></main><Footer/>
+<dialog id="search-dialog" aria-labelledby="search-title"><div class="dialog-head"><h2 id="search-title" style="font-size:17px">Tìm trong ghi chép</h2><button class="iconbtn" data-close aria-label="Đóng tìm kiếm"><svg class="icon"><use href="#close"/></svg></button></div><div class="dialog-body"><label for="search-input" style="font-size:12px;display:block;margin-bottom:10px">Nhập tiêu đề hoặc một điều bạn quan tâm</label><input type="search" class="search-field" id="search-input" placeholder="Ví dụ: công việc, AI, buổi sáng…" autocomplete="off"><div class="search-results" id="search-results" aria-live="polite"></div></div></dialog>
+<script src="../scripts/site.js"></script>
+</body></html>

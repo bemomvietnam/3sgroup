@@ -1,0 +1,9 @@
+<header class="header"><div class="wrap nav">
+  <a class="wordmark" href="/" aria-label="Tùng, trang chủ">tùng<span>.</span></a>
+  <nav class="navlinks" aria-label="Điều hướng chính"><a class:list={{active:Astro.url.pathname==='/'}} href="/">Trang chủ</a><a class:list={{active:Astro.url.pathname.startsWith('/blog')}} href="/blog/">Bài viết</a><a class:list={{active:Astro.url.pathname==='/about/'}} href="/about/">Về tôi</a></nav>
+  <div class="tools"><button class="iconbtn" id="search-open" aria-label="Tìm bài viết"><svg class="icon"><use href="#search"/></svg></button>
+    <div class="theme"><button class="iconbtn" id="theme-toggle" aria-label="Chọn giao diện" aria-expanded="false" aria-controls="theme-popup"><svg class="icon"><use id="theme-icon" href="#sun"/></svg></button>
+      <div class="theme-popup" id="theme-popup" hidden><p>GIAO DIỆN ĐỌC</p><button class="theme-option" data-mode="auto" aria-pressed="true"><svg class="icon"><use href="#clock"/></svg>Theo giờ địa phương<span class="check">✓</span></button><button class="theme-option" data-mode="light" aria-pressed="false"><svg class="icon"><use href="#sun"/></svg>Sáng<span class="check">✓</span></button><button class="theme-option" data-mode="dark" aria-pressed="false"><svg class="icon"><use href="#moon"/></svg>Tối<span class="check">✓</span></button></div>
+    </div>
+  </div>
+</div></header>

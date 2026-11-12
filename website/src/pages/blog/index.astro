@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/SiteLayout.astro';
+import PostList from '../../components/PostList.astro';
+const posts=(await getCollection('blog')).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+---
+<Layout title="Bài viết | Tùng." description="Tất cả ghi chép về công việc, công nghệ và cuộc sống."><section class="page-intro"><div class="eyebrow"><span class="dot"></span>Ghi chép trên đường đi</div><h1>Những điều muốn giữ lại.</h1><p>Một vài câu chuyện, một vài góc nhìn. Mời bạn đọc chậm.</p></section><section class="archive"><PostList posts={posts}/></section></Layout>
