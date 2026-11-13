@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/SiteLayout.astro';
+import FeatureArt from '../components/FeatureArt.astro';
+import PostList from '../components/PostList.astro';
+import { SITE_TITLE,SITE_DESCRIPTION } from '../consts';
+const posts=(await getCollection('blog')).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+const featured=posts[0];
+---
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<section class="intro" aria-labelledby="intro-title"><div><div class="eyebrow"><span class="dot"></span>Một góc nhỏ trên internet</div><h1 id="intro-title">Ghi chép trên <em>đường đi.</em></h1><p>Về những điều tôi làm, những thứ tôi học,<br>và một vài suy nghĩ muốn giữ lại.</p></div><p class="intro-note"><svg class="icon" viewBox="0 0 40 40"><path d="M8 32c5-17 21-20 24-23-1 13-10 23-24 23Zm0 0L26 15M7 35l8-15"/></svg>Chậm lại một chút.<br>Đọc một điều hay.</p></section>
+{featured && <article class="featured"><FeatureArt/><div class="feature-copy"><div class="meta"><span class="tag">{featured.data.category}</span><span class="sep"></span><span>Bài nổi bật</span></div><h2><a href={`/blog/${featured.id}/`}>{featured.data.title}</a></h2><p>{featured.data.description}</p><div class="feature-bottom"><a class="textlink" href={`/blog/${featured.id}/`}>Dành vài phút đọc<svg class="icon"><use href="#arrow"/></svg></a></div></div></article>}
+<div class="content-grid"><section id="bai-viet" aria-label="Bài viết mới"><PostList posts={posts.slice(1)}/></section>
+<aside class="sidebar" aria-label="Về tác giả và chủ đề"><section class="about-card" id="ve-toi"><div class="avatar" aria-hidden="true">T.</div><h2>Chào bạn, tôi là Tùng.</h2><p>Đây là nơi tôi dành cho những ghi chép về công việc, công nghệ và cuộc sống thường ngày.</p><a class="textlink" href="/about/">Đọc thêm về tôi<svg class="icon"><use href="#arrow"/></svg></a></section><section class="side-section"><h2 class="side-title">Những điều tôi viết</h2><a class="topic" href="#bai-viet" data-topic="cong-viec"><span>Công việc</span><span>02</span></a><a class="topic" href="#bai-viet" data-topic="cong-nghe"><span>Công nghệ</span><span>01</span></a><a class="topic" href="#bai-viet" data-topic="song"><span>Sống &amp; nghĩ</span><span>01</span></a><blockquote class="side-quote">Một nơi để nghĩ chậm,<br>và viết rõ hơn.<small>Tinh thần của góc nhỏ này</small></blockquote></section></aside></div>
+<section class="closing"><div><h2>Cảm ơn bạn đã ghé qua.</h2><p>Mong bạn tìm thấy một điều đáng mang theo.</p></div><a href="#noi-dung">Về đầu trang ↑</a></section>
+</Layout>
