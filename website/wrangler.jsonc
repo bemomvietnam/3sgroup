@@ -2,5 +2,6 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "3sgroup",
   "compatibility_date": "2026-11-12",
+  "routes": [{ "pattern": "3sgroup.ai.vn", "custom_domain": true }],
   "assets": { "directory": "./dist" }
 }
